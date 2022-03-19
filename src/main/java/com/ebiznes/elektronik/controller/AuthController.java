@@ -1,15 +1,16 @@
 package com.ebiznes.elektronik.controller;
 
 import com.ebiznes.elektronik.dto.LoginRequest;
+import com.ebiznes.elektronik.dto.LoginResponse;
 import com.ebiznes.elektronik.dto.RegisterRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.val;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.ebiznes.elektronik.service.AuthService;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @RestController()
@@ -21,13 +22,14 @@ public class AuthController
     private final AuthService authService;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody @Valid LoginRequest loginRequest) {
-        return ResponseEntity.ok().build();
+    public LoginResponse login(@RequestBody @Valid LoginRequest loginRequest) {
+        return authService.loginUser(loginRequest);
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody @Valid RegisterRequest registerRequest) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public DefaultResponse register(@RequestBody @Valid RegisterRequest registerRequest) {
         authService.registerUser(registerRequest);
-        return ResponseEntity.ok().build();
+        return new DefaultResponse();
     }
 }

@@ -1,6 +1,7 @@
 package com.ebiznes.elektronik.entity;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
