@@ -1,12 +1,12 @@
-package service;
+package com.ebiznes.elektronik.service;
 
-import dto.LoginRequest;
-import dto.RegisterRequest;
-import entity.User;
+import com.ebiznes.elektronik.dto.LoginRequest;
+import com.ebiznes.elektronik.dto.RegisterRequest;
+import com.ebiznes.elektronik.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import repository.UserRepository;
+import com.ebiznes.elektronik.repository.UserRepository;
 import lombok.val;
 
 

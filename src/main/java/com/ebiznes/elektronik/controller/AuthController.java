@@ -1,14 +1,14 @@
-package controller;
+package com.ebiznes.elektronik.controller;
 
-import dto.LoginRequest;
-import dto.RegisterRequest;
+import com.ebiznes.elektronik.dto.LoginRequest;
+import com.ebiznes.elektronik.dto.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import service.AuthService;
+import com.ebiznes.elektronik.service.AuthService;
 
 import javax.validation.Valid;
 

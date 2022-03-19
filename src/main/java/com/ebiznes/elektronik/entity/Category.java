@@ -1,4 +1,4 @@
-package entity;
+package com.ebiznes.elektronik.entity;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
