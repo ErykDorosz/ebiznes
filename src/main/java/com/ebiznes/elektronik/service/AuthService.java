@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 import com.ebiznes.elektronik.repository.UserRepository;
 import lombok.val;
 
-import javax.servlet.http.Cookie;
-
 
 @Service
 @RequiredArgsConstructor
@@ -44,7 +42,7 @@ public class AuthService
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .name(registerRequest.getFirstName())
                 .surname(registerRequest.getLastName())
-                .isAdmin(false)
+                .admin(false)
                 .build();
         userRepository.save(user);
 

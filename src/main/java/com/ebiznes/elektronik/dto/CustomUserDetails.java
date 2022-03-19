@@ -51,7 +51,7 @@ public class CustomUserDetails extends User implements UserDetails {
                 .password(user.getPassword())
                 .name(user.getName())
                 .surname(user.getSurname())
-                .isAdmin(user.isAdmin())
+                .admin(user.isAdmin())
                 .build();
     }
 }

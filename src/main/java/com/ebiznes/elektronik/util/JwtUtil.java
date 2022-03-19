@@ -1,6 +1,7 @@
 package com.ebiznes.elektronik.util;
 
 import com.ebiznes.elektronik.dto.UserDto;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.experimental.UtilityClass;
@@ -21,6 +22,7 @@ public class JwtUtil {
     private String jwtIssuer;
     @Value("${security.jwt.expiration:3600}")
     private Long jwtExpiration;
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     public String generateJwt(UserDto user) {
         return Jwts.builder()
@@ -38,7 +40,7 @@ public class JwtUtil {
                 .parseClaimsJws(jwt)
                 .getBody();
 
-        return claims.get("user", UserDto.class);
+        return objectMapper.convertValue(claims.get("user"), UserDto.class);
     }
 
     public boolean validate(String token) {
