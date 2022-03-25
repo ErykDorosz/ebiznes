@@ -2,6 +2,7 @@ package com.ebiznes.elektronik.service;
 
 import com.ebiznes.elektronik.dto.*;
 import com.ebiznes.elektronik.entity.User;
+import com.ebiznes.elektronik.exception.UserExistsException;
 import com.ebiznes.elektronik.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -37,6 +38,11 @@ public class AuthService
     }
 
     public void registerUser(RegisterRequest registerRequest) {
+        val existingUser = userRepository.findByEmail(registerRequest.getEmail());
+        if (existingUser.isPresent()) {
+            throw new UserExistsException();
+        }
+
         val user = User.builder()
                 .email(registerRequest.getEmail())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
