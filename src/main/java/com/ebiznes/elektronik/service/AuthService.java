@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import com.ebiznes.elektronik.repository.UserRepository;
 import lombok.val;
 
+import java.security.SecureRandom;
+
 
 @Service
 @RequiredArgsConstructor
@@ -21,6 +23,7 @@ public class AuthService
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
+    private final SecureRandom secureRandom = new SecureRandom();
 
 
     public LoginResponse loginUser(LoginRequest loginRequest) {
@@ -34,6 +37,30 @@ public class AuthService
         val user = (CustomUserDetails) authenticate.getPrincipal();
         val token = jwtUtil.generateJwt(UserDto.of(user));
 
+        return new LoginResponse(token);
+    }
+
+    public LoginResponse loginFacebookUser(FacebookLoginRequest facebookLoginRequest) {
+        //TODO: validate facebook token
+
+        val user = userRepository.findByEmail(facebookLoginRequest.getEmail());
+        if (user.isPresent()) {
+            val token = jwtUtil.generateJwt(UserDto.of(user.get()));
+            return new LoginResponse(token);
+        }
+
+        byte[] password = new byte[20];
+        secureRandom.nextBytes(password);
+
+        val newUser = User.builder()
+                .email(facebookLoginRequest.getEmail())
+                .password(passwordEncoder.encode(new String(password)))
+                .name(facebookLoginRequest.getFirstName())
+                .surname(facebookLoginRequest.getLastName())
+                .admin(false)
+                .build();
+        userRepository.save(newUser);
+        val token = jwtUtil.generateJwt(UserDto.of(newUser));
         return new LoginResponse(token);
     }
 

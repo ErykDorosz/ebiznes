@@ -1,17 +1,18 @@
 package com.ebiznes.elektronik.controller;
 
+import com.ebiznes.elektronik.dto.FacebookLoginRequest;
 import com.ebiznes.elektronik.dto.LoginRequest;
 import com.ebiznes.elektronik.dto.LoginResponse;
 import com.ebiznes.elektronik.dto.RegisterRequest;
+import com.ebiznes.elektronik.service.AuthService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import lombok.val;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import com.ebiznes.elektronik.service.AuthService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @RestController()
@@ -32,5 +33,10 @@ public class AuthController
     public ResponseEntity<Void> register(@RequestBody @Valid RegisterRequest registerRequest) {
         authService.registerUser(registerRequest);
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/login/facebook")
+    public LoginResponse loginFacebook(@RequestBody @Valid FacebookLoginRequest facebookLoginRequest) {
+        return authService.loginFacebookUser(facebookLoginRequest);
     }
 }
