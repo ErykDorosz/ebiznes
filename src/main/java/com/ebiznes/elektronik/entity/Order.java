@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,6 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Table(name = "orders")
 @Data
+@SuperBuilder
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

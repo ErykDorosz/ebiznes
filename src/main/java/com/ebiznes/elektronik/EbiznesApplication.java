@@ -1,5 +1,6 @@
 package com.ebiznes.elektronik;
 
+import com.ebiznes.elektronik.controller.ProductController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

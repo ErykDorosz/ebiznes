@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -14,6 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Table(name = "categories")
 @Data
+@SuperBuilder
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
