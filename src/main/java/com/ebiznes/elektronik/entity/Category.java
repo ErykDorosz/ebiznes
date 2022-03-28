@@ -1,5 +1,6 @@
 package com.ebiznes.elektronik.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +29,7 @@ public class Category {
     @Column(name = "description", nullable = true)
     private String description;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private Set<Product> products = new HashSet<>();
 
