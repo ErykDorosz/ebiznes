@@ -24,7 +24,7 @@ public class Product {
     private String name;
 
     @Column(name = "image", nullable = false)
-    private String image;
+    private String imageFilename;
 
     @Column(name = "unit_price", nullable = false)
     private BigDecimal unitPrice;
