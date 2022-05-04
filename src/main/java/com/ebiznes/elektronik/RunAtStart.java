@@ -39,21 +39,32 @@ public class RunAtStart {
                 password("lulPassword").admin(false).build();
         userRepository.save(user1);
 
-        Category category = Category.builder().categoryName("AGD").description("No AGD no").build();
+        Category categoryOdkurzacze = Category.builder().categoryName("Odkurzacze").description("Urządzenie elektryczne służące do oczyszczania przedmiotów lub powierzchni").build();
+        Category categoryTelewizory = Category.builder().categoryName("Telewizory").description("Wyświetlacz pozwalający na odbiór sygnału").build();
+        Category categoryLodowki = Category.builder().categoryName("Lodówki").description("Urządzenie, którego zadaniem jest obniżenie temperatury środowiska chłodzonego").build();
+        Category categoryKomputery = Category.builder().categoryName("Komputery").description("Maszyna przeznaczona do przetwarzania informacji").build();
+        Category categorySmartfony = Category.builder().categoryName("Smartfon").description("Przenośne, multimedialne urządzenie, łączące w sobie funkcje telefonu komórkowego i komputera przenośnego").build();
+        Category categoryPralki = Category.builder().categoryName("Pralki").description("Urządzenie do czyszczenia ubrań").build();
 
-        categoryRepository.save(category);
 
-        Product product = Product.builder().name("Samsung Pro XD").category(category).imageFilename("46288474-e423-45b6-be2c-0b83b4f5a01b.jpg").
+        categoryRepository.save(categoryOdkurzacze);
+        categoryRepository.save(categoryTelewizory);
+        categoryRepository.save(categoryLodowki);
+        categoryRepository.save(categoryKomputery);
+        categoryRepository.save(categorySmartfony);
+        categoryRepository.save(categoryPralki);
+
+        Product product = Product.builder().name("Lodówka Siemens X562").category(categoryLodowki).imageFilename("Lodowka-SIEMENS.jpg").
                 unitPrice(new BigDecimal(123)).build();
-        Product product1 = Product.builder().name("Xiaomi Pro XD").category(category).imageFilename("46288474-e423-45b6-be2c-0b83b4f5a01b.jpg").
+        Product product1 = Product.builder().name("Xiaomi Redmi Note 10 Pro").category(categorySmartfony).imageFilename("Smartfon-XIAOMI-Redmi-Note-10-Pro.jpg").
                 unitPrice(new BigDecimal(123)).build();
-        Product product2 = Product.builder().name("Iphone Pro XD").category(category).imageFilename("46288474-e423-45b6-be2c-0b83b4f5a01b.jpg").
+        Product product2 = Product.builder().name("Iphone 12").category(categorySmartfony).imageFilename("iphone-12.jpg").
                 unitPrice(new BigDecimal(123)).build();
-        Product product3 = Product.builder().name("MyPhone Pro XD").category(category).imageFilename("46288474-e423-45b6-be2c-0b83b4f5a01b.jpg").
+        Product product3 = Product.builder().name("MyPhone Pro XD").category(categorySmartfony).imageFilename("my_phone.jpg").
                 unitPrice(new BigDecimal(123)).build();
-        Product product4 = Product.builder().name("Xiaomi lols").category(category).imageFilename("46288474-e423-45b6-be2c-0b83b4f5a01b.jpg").
+        Product product4 = Product.builder().name("Pralka Xiaomi SuperCharge").category(categoryPralki).imageFilename("pralka_frania.jpg").
                 unitPrice(new BigDecimal(123)).build();
-        Product product5 = Product.builder().name("HannSpree").category(category).imageFilename("46288474-e423-45b6-be2c-0b83b4f5a01b.jpg").
+        Product product5 = Product.builder().name("Pralka Beko SWRE7512XWWE").category(categoryPralki).imageFilename("pralka_beko.jpg").
                 unitPrice(new BigDecimal(356)).build();
 
         productRepository.save(product);

@@ -36,7 +36,7 @@ public class ProductService
     public List<Product> getProduct(int page)
     {
         val page1 = productRepository.findAll(
-                PageRequest.of(page, 3
+                PageRequest.of(page, 8
                 ));
 
         return page1.getContent();
