@@ -43,17 +43,17 @@ public class RunAtStart {
 
         categoryRepository.save(category);
 
-        Product product = Product.builder().name("Samsung Pro XD").category(category).imageFilename("img1").
+        Product product = Product.builder().name("Samsung Pro XD").category(category).imageFilename("46288474-e423-45b6-be2c-0b83b4f5a01b.jpg").
                 unitPrice(new BigDecimal(123)).build();
-        Product product1 = Product.builder().name("Xiaomi Pro XD").category(category).imageFilename("img2").
+        Product product1 = Product.builder().name("Xiaomi Pro XD").category(category).imageFilename("46288474-e423-45b6-be2c-0b83b4f5a01b.jpg").
                 unitPrice(new BigDecimal(123)).build();
-        Product product2 = Product.builder().name("Iphone Pro XD").category(category).imageFilename("img3").
+        Product product2 = Product.builder().name("Iphone Pro XD").category(category).imageFilename("46288474-e423-45b6-be2c-0b83b4f5a01b.jpg").
                 unitPrice(new BigDecimal(123)).build();
-        Product product3 = Product.builder().name("MyPhone Pro XD").category(category).imageFilename("img4").
+        Product product3 = Product.builder().name("MyPhone Pro XD").category(category).imageFilename("46288474-e423-45b6-be2c-0b83b4f5a01b.jpg").
                 unitPrice(new BigDecimal(123)).build();
-        Product product4 = Product.builder().name("Xiaomi lols").category(category).imageFilename("img5").
+        Product product4 = Product.builder().name("Xiaomi lols").category(category).imageFilename("46288474-e423-45b6-be2c-0b83b4f5a01b.jpg").
                 unitPrice(new BigDecimal(123)).build();
-        Product product5 = Product.builder().name("HannSpree").category(category).imageFilename("img6").
+        Product product5 = Product.builder().name("HannSpree").category(category).imageFilename("46288474-e423-45b6-be2c-0b83b4f5a01b.jpg").
                 unitPrice(new BigDecimal(356)).build();
 
         productRepository.save(product);

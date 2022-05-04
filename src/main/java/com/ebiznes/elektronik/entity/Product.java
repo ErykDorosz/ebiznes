@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
@@ -24,6 +25,7 @@ public class Product {
     private String name;
 
     @Column(name = "image", nullable = false)
+    @NotNull
     private String imageFilename;
 
     @Column(name = "unit_price", nullable = false)
