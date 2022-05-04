@@ -1,6 +1,7 @@
 package com.ebiznes.elektronik.service;
 
 import com.ebiznes.elektronik.dto.AddProductRequest;
+import com.ebiznes.elektronik.dto.ProductPageResponse;
 import com.ebiznes.elektronik.entity.Product;
 import com.ebiznes.elektronik.repository.CategoryRepository;
 import com.ebiznes.elektronik.repository.ProductRepository;
@@ -81,5 +82,15 @@ public class ProductService
         {
             path.toFile().mkdirs();
         }
+    }
+
+    public ProductPageResponse getProductPage(int pageNumber) {
+        val page = productRepository.findAll(
+                PageRequest.of(pageNumber, 4));
+
+        return ProductPageResponse.builder()
+                .items(page.getContent())
+                .totalPages(page.getTotalPages())
+                .build();
     }
 }

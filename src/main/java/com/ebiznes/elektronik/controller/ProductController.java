@@ -1,6 +1,7 @@
 package com.ebiznes.elektronik.controller;
 
 import com.ebiznes.elektronik.dto.AddProductRequest;
+import com.ebiznes.elektronik.dto.ProductPageResponse;
 import com.ebiznes.elektronik.entity.Product;
 import com.ebiznes.elektronik.repository.ProductRepository;
 import com.ebiznes.elektronik.service.ProductService;
@@ -28,6 +29,11 @@ public class ProductController
     @GetMapping
     public List<Product> findAllProducts() {
         return productService.getProduct(0);
+    }
+
+    @GetMapping("/pages/{pageNumber}")
+    public ProductPageResponse getProductPage(@PathVariable(value = "pageNumber") int pageNumber) {
+        return productService.getProductPage(pageNumber);
     }
 
     @GetMapping("/{id}")
