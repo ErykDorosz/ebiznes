@@ -3,13 +3,14 @@ package com.ebiznes.elektronik.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.ebiznes.elektronik.entity.Checkout;
+import com.ebiznes.elektronik.entity.CheckoutPayment;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
-import com.hamdibouallegue.stripe.model.CheckoutPayment;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.checkout.Session;
