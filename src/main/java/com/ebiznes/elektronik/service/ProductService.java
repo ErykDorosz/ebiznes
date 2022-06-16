@@ -86,7 +86,7 @@ public class ProductService
 
     public ProductPageResponse getProductPage(int pageNumber) {
         val page = productRepository.findAll(
-                PageRequest.of(pageNumber, 4));
+                PageRequest.of(pageNumber, 3));
 
         return ProductPageResponse.builder()
                 .items(page.getContent())
